@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chabelly.Model", "chabelly.Model\chabelly.Model.csproj", "{463617E3-9EA9-4474-B49E-F56770069B73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chabelly.Repository", "chabelly.Repository\chabelly.Repository.csproj", "{B387F139-0A29-4546-8048-3C87DA54CC0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chabelly.Service", "chabelly.Service\chabelly.Service.csproj", "{6BE7A55D-FF7B-4B30-8A22-62ABCA3D71AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chabelly.Helpers", "chabelly.Helpers\chabelly.Helpers.csproj", "{117FB65C-CDA6-4DD0-B572-EE58653A4026}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chabelly.Gestao", "chabelly.Gestao\chabelly.Gestao.csproj", "{62370517-5E0C-4805-A749-8412DE0B85ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chabelly.Store", "chabelly.Store\chabelly.Store.csproj", "{281C1375-80A8-48D5-9628-A9D6D2DA4C79}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{463617E3-9EA9-4474-B49E-F56770069B73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{463617E3-9EA9-4474-B49E-F56770069B73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{463617E3-9EA9-4474-B49E-F56770069B73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{463617E3-9EA9-4474-B49E-F56770069B73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B387F139-0A29-4546-8048-3C87DA54CC0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B387F139-0A29-4546-8048-3C87DA54CC0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B387F139-0A29-4546-8048-3C87DA54CC0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B387F139-0A29-4546-8048-3C87DA54CC0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BE7A55D-FF7B-4B30-8A22-62ABCA3D71AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BE7A55D-FF7B-4B30-8A22-62ABCA3D71AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BE7A55D-FF7B-4B30-8A22-62ABCA3D71AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BE7A55D-FF7B-4B30-8A22-62ABCA3D71AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{117FB65C-CDA6-4DD0-B572-EE58653A4026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{117FB65C-CDA6-4DD0-B572-EE58653A4026}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{117FB65C-CDA6-4DD0-B572-EE58653A4026}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{117FB65C-CDA6-4DD0-B572-EE58653A4026}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62370517-5E0C-4805-A749-8412DE0B85ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62370517-5E0C-4805-A749-8412DE0B85ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62370517-5E0C-4805-A749-8412DE0B85ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62370517-5E0C-4805-A749-8412DE0B85ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{281C1375-80A8-48D5-9628-A9D6D2DA4C79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{281C1375-80A8-48D5-9628-A9D6D2DA4C79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{281C1375-80A8-48D5-9628-A9D6D2DA4C79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{281C1375-80A8-48D5-9628-A9D6D2DA4C79}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

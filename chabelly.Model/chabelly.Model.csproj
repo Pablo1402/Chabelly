@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{463617E3-9EA9-4474-B49E-F56770069B73}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>chabelly.Model</RootNamespace>
+    <AssemblyName>chabelly.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="atributo_produto.cs">
+      <DependentUpon>chabellyDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="categoria.cs">
+      <DependentUpon>chabellyDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="chabellyDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>chabellyDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="chabellyDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>chabellyDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="chabellyDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>chabellyDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="contato_usuario.cs">
+      <DependentUpon>chabellyDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dominio.cs">
+      <DependentUpon>chabellyDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="enderecos.cs">
+      <DependentUpon>chabellyDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="estoque_produto.cs">
+      <DependentUpon>chabellyDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="foto_produto.cs">
+      <DependentUpon>chabellyDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="grupo.cs">
+      <DependentUpon>chabellyDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="historico_estoque.cs">
+      <DependentUpon>chabellyDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="permissoes.cs">
+      <DependentUpon>chabellyDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="preco_produto.cs">
+      <DependentUpon>chabellyDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="produto.cs">
+      <DependentUpon>chabellyDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tipo_atributo.cs">
+      <DependentUpon>chabellyDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usuario.cs">
+      <DependentUpon>chabellyDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\RetornoJson.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\chabelly.Helpers\chabelly.Helpers.csproj">
+      <Project>{117fb65c-cda6-4dd0-b572-ee58653a4026}</Project>
+      <Name>chabelly.Helpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="chabellyDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>chabellyDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="chabellyDb.edmx.diagram">
+      <DependentUpon>chabellyDb.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="chabellyDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>chabellyDb.edmx</DependentUpon>
+      <LastGenOutput>chabellyDb.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="chabellyDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>chabellyDb.edmx</DependentUpon>
+      <LastGenOutput>chabellyDb.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,932 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ChabellyModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="atributo_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo_atributo_id" Type="bigint" Nullable="false" />
+          <Property Name="produto_id" Type="bigint" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="data_desativacao" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="data_criacao" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="data_desativacao" Type="datetime" Precision="0" />
+          <Property Name="usuario_destativacao" Type="bigint" />
+          <Property Name="categoria_pai" Type="bigint" />
+        </EntityType>
+        <EntityType Name="contato_usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario_id" Type="bigint" />
+          <Property Name="tipo" Type="tinyint" Nullable="false" />
+          <Property Name="valor" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="data_desativacao" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="dominio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="enderecos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario_id" Type="bigint" Nullable="false" />
+          <Property Name="tipo" Type="tinyint" Nullable="false" />
+          <Property Name="logadouro" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="complemento" Type="varchar" MaxLength="150" />
+          <Property Name="numero" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="bairro" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cidade" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="estado" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="pais" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="estoque_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="produto_id" Type="bigint" Nullable="false" />
+          <Property Name="atributo_produto_id" Type="bigint" Nullable="false" />
+          <Property Name="estoque_produto" Type="int" Nullable="false" />
+          <Property Name="estoque_atributo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="foto_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome_foto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="produto_id" Type="bigint" Nullable="false" />
+          <Property Name="ordem" Type="int" />
+        </EntityType>
+        <EntityType Name="grupo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="grupo_permissao">
+          <Key>
+            <PropertyRef Name="grupo_id" />
+            <PropertyRef Name="permissao_id" />
+          </Key>
+          <Property Name="grupo_id" Type="bigint" Nullable="false" />
+          <Property Name="permissao_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="historico_estoque">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="produto_id" Type="bigint" Nullable="false" />
+          <Property Name="tipo_alteracao" Type="int" />
+          <Property Name="observacao" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="permissoes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sigla" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="preco_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="produto_id" Type="bigint" Nullable="false" />
+          <Property Name="data_cadastro" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="valor" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="1000" />
+          <Property Name="codigo_referencia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="data_cadastro" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="foto_id" Type="bigint" />
+          <Property Name="categoria_id" Type="bigint" />
+          <Property Name="data_desativacao" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tipo_atributo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="senha" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="dominio_id" Type="bigint" Nullable="false" />
+          <Property Name="data_criacao" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="data_desativacao" Type="datetime" Precision="0" />
+          <Property Name="endereco_principal" Type="bigint" />
+        </EntityType>
+        <EntityType Name="usuario_grupo">
+          <Key>
+            <PropertyRef Name="usuario_id" />
+            <PropertyRef Name="grupo_id" />
+          </Key>
+          <Property Name="usuario_id" Type="bigint" Nullable="false" />
+          <Property Name="grupo_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="categoria_categoria_pai">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
+          <End Role="categoria1" Type="Self.categoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="categoria1">
+              <PropertyRef Name="categoria_pai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_contato_usuario_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="contato_usuario" Type="Self.contato_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contato_usuario">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_endereco_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="enderecos" Type="Self.enderecos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="enderecos">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estoque_produto_atributo">
+          <End Role="atributo_produto" Type="Self.atributo_produto" Multiplicity="1" />
+          <End Role="estoque_produto" Type="Self.estoque_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="atributo_produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="estoque_produto">
+              <PropertyRef Name="atributo_produto_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estoque_produto_produto">
+          <End Role="produto" Type="Self.produto" Multiplicity="1" />
+          <End Role="estoque_produto" Type="Self.estoque_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="estoque_produto">
+              <PropertyRef Name="produto_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_foto_produto_produto">
+          <End Role="produto" Type="Self.produto" Multiplicity="1" />
+          <End Role="foto_produto" Type="Self.foto_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="foto_produto">
+              <PropertyRef Name="produto_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_grupo_permissao_grupo">
+          <End Role="grupo" Type="Self.grupo" Multiplicity="1" />
+          <End Role="grupo_permissao" Type="Self.grupo_permissao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="grupo_permissao">
+              <PropertyRef Name="grupo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_grupo_permissao_permissao">
+          <End Role="permissoes" Type="Self.permissoes" Multiplicity="1" />
+          <End Role="grupo_permissao" Type="Self.grupo_permissao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="permissoes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="grupo_permissao">
+              <PropertyRef Name="permissao_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_historico_estoque_produto">
+          <End Role="produto" Type="Self.produto" Multiplicity="1" />
+          <End Role="historico_estoque" Type="Self.historico_estoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="historico_estoque">
+              <PropertyRef Name="produto_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_preco_produto_produto">
+          <End Role="produto" Type="Self.produto" Multiplicity="1" />
+          <End Role="preco_produto" Type="Self.preco_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="preco_produto">
+              <PropertyRef Name="produto_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_usuario_dominio">
+          <End Role="dominio" Type="Self.dominio" Multiplicity="1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dominio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="dominio_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_usuario_grupo_grupo">
+          <End Role="grupo" Type="Self.grupo" Multiplicity="1" />
+          <End Role="usuario_grupo" Type="Self.usuario_grupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario_grupo">
+              <PropertyRef Name="grupo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_usuario_grupo_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="usuario_grupo" Type="Self.usuario_grupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario_grupo">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ChabellyModelStoreContainer">
+          <EntitySet Name="atributo_produto" EntityType="Self.atributo_produto" Schema="Chabelly" store:Type="Tables" />
+          <EntitySet Name="categoria" EntityType="Self.categoria" Schema="Chabelly" store:Type="Tables" />
+          <EntitySet Name="contato_usuario" EntityType="Self.contato_usuario" Schema="Chabelly" store:Type="Tables" />
+          <EntitySet Name="dominio" EntityType="Self.dominio" Schema="Chabelly" store:Type="Tables" />
+          <EntitySet Name="enderecos" EntityType="Self.enderecos" Schema="Chabelly" store:Type="Tables" />
+          <EntitySet Name="estoque_produto" EntityType="Self.estoque_produto" Schema="Chabelly" store:Type="Tables" />
+          <EntitySet Name="foto_produto" EntityType="Self.foto_produto" Schema="Chabelly" store:Type="Tables" />
+          <EntitySet Name="grupo" EntityType="Self.grupo" Schema="Chabelly" store:Type="Tables" />
+          <EntitySet Name="grupo_permissao" EntityType="Self.grupo_permissao" Schema="Chabelly" store:Type="Tables" />
+          <EntitySet Name="historico_estoque" EntityType="Self.historico_estoque" Schema="Chabelly" store:Type="Tables" />
+          <EntitySet Name="permissoes" EntityType="Self.permissoes" Schema="Chabelly" store:Type="Tables" />
+          <EntitySet Name="preco_produto" EntityType="Self.preco_produto" Schema="Chabelly" store:Type="Tables" />
+          <EntitySet Name="produto" EntityType="Self.produto" Schema="Chabelly" store:Type="Tables" />
+          <EntitySet Name="tipo_atributo" EntityType="Self.tipo_atributo" Schema="Chabelly" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="Chabelly" store:Type="Tables" />
+          <EntitySet Name="usuario_grupo" EntityType="Self.usuario_grupo" Schema="Chabelly" store:Type="Tables" />
+          <AssociationSet Name="categoria_categoria_pai" Association="Self.categoria_categoria_pai">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="categoria1" EntitySet="categoria" />
+          </AssociationSet>
+          <AssociationSet Name="fk_contato_usuario_usuario" Association="Self.fk_contato_usuario_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="contato_usuario" EntitySet="contato_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_endereco_usuario" Association="Self.fk_endereco_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="enderecos" EntitySet="enderecos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estoque_produto_atributo" Association="Self.fk_estoque_produto_atributo">
+            <End Role="atributo_produto" EntitySet="atributo_produto" />
+            <End Role="estoque_produto" EntitySet="estoque_produto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estoque_produto_produto" Association="Self.fk_estoque_produto_produto">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="estoque_produto" EntitySet="estoque_produto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_foto_produto_produto" Association="Self.fk_foto_produto_produto">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="foto_produto" EntitySet="foto_produto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_grupo_permissao_grupo" Association="Self.fk_grupo_permissao_grupo">
+            <End Role="grupo" EntitySet="grupo" />
+            <End Role="grupo_permissao" EntitySet="grupo_permissao" />
+          </AssociationSet>
+          <AssociationSet Name="fk_grupo_permissao_permissao" Association="Self.fk_grupo_permissao_permissao">
+            <End Role="permissoes" EntitySet="permissoes" />
+            <End Role="grupo_permissao" EntitySet="grupo_permissao" />
+          </AssociationSet>
+          <AssociationSet Name="fk_historico_estoque_produto" Association="Self.fk_historico_estoque_produto">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="historico_estoque" EntitySet="historico_estoque" />
+          </AssociationSet>
+          <AssociationSet Name="fk_preco_produto_produto" Association="Self.fk_preco_produto_produto">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="preco_produto" EntitySet="preco_produto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_usuario_dominio" Association="Self.fk_usuario_dominio">
+            <End Role="dominio" EntitySet="dominio" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_usuario_grupo_grupo" Association="Self.fk_usuario_grupo_grupo">
+            <End Role="grupo" EntitySet="grupo" />
+            <End Role="usuario_grupo" EntitySet="usuario_grupo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_usuario_grupo_usuario" Association="Self.fk_usuario_grupo_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="usuario_grupo" EntitySet="usuario_grupo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ChabellyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="atributo_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo_atributo_id" Type="Int64" Nullable="false" />
+          <Property Name="produto_id" Type="Int64" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="data_desativacao" Type="DateTime" />
+          <NavigationProperty Name="estoque_produto" Relationship="Self.fk_estoque_produto_atributo" FromRole="atributo_produto" ToRole="estoque_produto" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="data_criacao" Type="DateTime" Nullable="false" />
+          <Property Name="data_desativacao" Type="DateTime" />
+          <Property Name="usuario_destativacao" Type="Int64" />
+          <Property Name="categoria_pai" Type="Int64" />
+          <NavigationProperty Name="categoria1" Relationship="Self.categoria_categoria_pai" FromRole="categoria" ToRole="categoria1" />
+          <NavigationProperty Name="categoria2" Relationship="Self.categoria_categoria_pai" FromRole="categoria1" ToRole="categoria" />
+        </EntityType>
+        <EntityType Name="contato_usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario_id" Type="Int64" />
+          <Property Name="tipo" Type="SByte" Nullable="false" />
+          <Property Name="valor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="data_desativacao" Type="DateTime" />
+          <NavigationProperty Name="usuario" Relationship="Self.fk_contato_usuario_usuario" FromRole="contato_usuario" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="dominio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="usuario" Relationship="Self.fk_usuario_dominio" FromRole="dominio" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="enderecos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario_id" Type="Int64" Nullable="false" />
+          <Property Name="tipo" Type="SByte" Nullable="false" />
+          <Property Name="logadouro" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="complemento" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="numero" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bairro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pais" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="usuario" Relationship="Self.fk_endereco_usuario" FromRole="enderecos" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="estoque_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="produto_id" Type="Int64" Nullable="false" />
+          <Property Name="atributo_produto_id" Type="Int64" Nullable="false" />
+          <Property Name="estoque_produto1" Type="Int32" Nullable="false" />
+          <Property Name="estoque_atributo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="atributo_produto" Relationship="Self.fk_estoque_produto_atributo" FromRole="estoque_produto" ToRole="atributo_produto" />
+          <NavigationProperty Name="produto" Relationship="Self.fk_estoque_produto_produto" FromRole="estoque_produto" ToRole="produto" />
+        </EntityType>
+        <EntityType Name="foto_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome_foto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="produto_id" Type="Int64" Nullable="false" />
+          <Property Name="ordem" Type="Int32" />
+          <NavigationProperty Name="produto" Relationship="Self.fk_foto_produto_produto" FromRole="foto_produto" ToRole="produto" />
+        </EntityType>
+        <EntityType Name="grupo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="permissoes" Relationship="Self.grupo_permissao" FromRole="grupo" ToRole="permissoes" />
+          <NavigationProperty Name="usuario" Relationship="Self.usuario_grupo" FromRole="grupo" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="historico_estoque">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="produto_id" Type="Int64" Nullable="false" />
+          <Property Name="tipo_alteracao" Type="Int32" />
+          <Property Name="observacao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="produto" Relationship="Self.fk_historico_estoque_produto" FromRole="historico_estoque" ToRole="produto" />
+        </EntityType>
+        <EntityType Name="permissoes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sigla" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="grupo" Relationship="Self.grupo_permissao" FromRole="permissoes" ToRole="grupo" />
+        </EntityType>
+        <EntityType Name="preco_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="produto_id" Type="Int64" Nullable="false" />
+          <Property Name="data_cadastro" Type="DateTime" Nullable="false" />
+          <Property Name="valor" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="produto" Relationship="Self.fk_preco_produto_produto" FromRole="preco_produto" ToRole="produto" />
+        </EntityType>
+        <EntityType Name="produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_referencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="data_cadastro" Type="DateTime" Nullable="false" />
+          <Property Name="foto_id" Type="Int64" />
+          <Property Name="categoria_id" Type="Int64" />
+          <Property Name="data_desativacao" Type="DateTime" />
+          <NavigationProperty Name="estoque_produto" Relationship="Self.fk_estoque_produto_produto" FromRole="produto" ToRole="estoque_produto" />
+          <NavigationProperty Name="foto_produto" Relationship="Self.fk_foto_produto_produto" FromRole="produto" ToRole="foto_produto" />
+          <NavigationProperty Name="historico_estoque" Relationship="Self.fk_historico_estoque_produto" FromRole="produto" ToRole="historico_estoque" />
+          <NavigationProperty Name="preco_produto" Relationship="Self.fk_preco_produto_produto" FromRole="produto" ToRole="preco_produto" />
+        </EntityType>
+        <EntityType Name="tipo_atributo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="senha" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dominio_id" Type="Int64" Nullable="false" />
+          <Property Name="data_criacao" Type="DateTime" Nullable="false" />
+          <Property Name="data_desativacao" Type="DateTime" />
+          <Property Name="endereco_principal" Type="Int64" />
+          <NavigationProperty Name="contato_usuario" Relationship="Self.fk_contato_usuario_usuario" FromRole="usuario" ToRole="contato_usuario" />
+          <NavigationProperty Name="dominio" Relationship="Self.fk_usuario_dominio" FromRole="usuario" ToRole="dominio" />
+          <NavigationProperty Name="enderecos" Relationship="Self.fk_endereco_usuario" FromRole="usuario" ToRole="enderecos" />
+          <NavigationProperty Name="grupo" Relationship="Self.usuario_grupo" FromRole="usuario" ToRole="grupo" />
+        </EntityType>
+        <Association Name="fk_estoque_produto_atributo">
+          <End Role="atributo_produto" Type="Self.atributo_produto" Multiplicity="1" />
+          <End Role="estoque_produto" Type="Self.estoque_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="atributo_produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="estoque_produto">
+              <PropertyRef Name="atributo_produto_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="categoria_categoria_pai">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
+          <End Role="categoria1" Type="Self.categoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="categoria1">
+              <PropertyRef Name="categoria_pai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_contato_usuario_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="contato_usuario" Type="Self.contato_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contato_usuario">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_usuario_dominio">
+          <End Role="dominio" Type="Self.dominio" Multiplicity="1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dominio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="dominio_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_endereco_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="enderecos" Type="Self.enderecos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="enderecos">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estoque_produto_produto">
+          <End Role="produto" Type="Self.produto" Multiplicity="1" />
+          <End Role="estoque_produto" Type="Self.estoque_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="estoque_produto">
+              <PropertyRef Name="produto_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_foto_produto_produto">
+          <End Role="produto" Type="Self.produto" Multiplicity="1" />
+          <End Role="foto_produto" Type="Self.foto_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="foto_produto">
+              <PropertyRef Name="produto_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_historico_estoque_produto">
+          <End Role="produto" Type="Self.produto" Multiplicity="1" />
+          <End Role="historico_estoque" Type="Self.historico_estoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="historico_estoque">
+              <PropertyRef Name="produto_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_preco_produto_produto">
+          <End Role="produto" Type="Self.produto" Multiplicity="1" />
+          <End Role="preco_produto" Type="Self.preco_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="preco_produto">
+              <PropertyRef Name="produto_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="grupo_permissao">
+          <End Role="grupo" Type="Self.grupo" Multiplicity="*" />
+          <End Role="permissoes" Type="Self.permissoes" Multiplicity="*" />
+        </Association>
+        <Association Name="usuario_grupo">
+          <End Role="grupo" Type="Self.grupo" Multiplicity="*" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ChabellyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="atributo_produto" EntityType="Self.atributo_produto" />
+          <EntitySet Name="categoria" EntityType="Self.categoria" />
+          <EntitySet Name="contato_usuario" EntityType="Self.contato_usuario" />
+          <EntitySet Name="dominio" EntityType="Self.dominio" />
+          <EntitySet Name="enderecos" EntityType="Self.enderecos" />
+          <EntitySet Name="estoque_produto" EntityType="Self.estoque_produto" />
+          <EntitySet Name="foto_produto" EntityType="Self.foto_produto" />
+          <EntitySet Name="grupo" EntityType="Self.grupo" />
+          <EntitySet Name="historico_estoque" EntityType="Self.historico_estoque" />
+          <EntitySet Name="permissoes" EntityType="Self.permissoes" />
+          <EntitySet Name="preco_produto" EntityType="Self.preco_produto" />
+          <EntitySet Name="produto" EntityType="Self.produto" />
+          <EntitySet Name="tipo_atributo" EntityType="Self.tipo_atributo" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <AssociationSet Name="fk_estoque_produto_atributo" Association="Self.fk_estoque_produto_atributo">
+            <End Role="atributo_produto" EntitySet="atributo_produto" />
+            <End Role="estoque_produto" EntitySet="estoque_produto" />
+          </AssociationSet>
+          <AssociationSet Name="categoria_categoria_pai" Association="Self.categoria_categoria_pai">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="categoria1" EntitySet="categoria" />
+          </AssociationSet>
+          <AssociationSet Name="fk_contato_usuario_usuario" Association="Self.fk_contato_usuario_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="contato_usuario" EntitySet="contato_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_usuario_dominio" Association="Self.fk_usuario_dominio">
+            <End Role="dominio" EntitySet="dominio" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_endereco_usuario" Association="Self.fk_endereco_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="enderecos" EntitySet="enderecos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estoque_produto_produto" Association="Self.fk_estoque_produto_produto">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="estoque_produto" EntitySet="estoque_produto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_foto_produto_produto" Association="Self.fk_foto_produto_produto">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="foto_produto" EntitySet="foto_produto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_historico_estoque_produto" Association="Self.fk_historico_estoque_produto">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="historico_estoque" EntitySet="historico_estoque" />
+          </AssociationSet>
+          <AssociationSet Name="fk_preco_produto_produto" Association="Self.fk_preco_produto_produto">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="preco_produto" EntitySet="preco_produto" />
+          </AssociationSet>
+          <AssociationSet Name="grupo_permissao" Association="Self.grupo_permissao">
+            <End Role="grupo" EntitySet="grupo" />
+            <End Role="permissoes" EntitySet="permissoes" />
+          </AssociationSet>
+          <AssociationSet Name="usuario_grupo" Association="Self.usuario_grupo">
+            <End Role="grupo" EntitySet="grupo" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ChabellyModelStoreContainer" CdmEntityContainer="ChabellyEntities">
+          <EntitySetMapping Name="atributo_produto">
+            <EntityTypeMapping TypeName="ChabellyModel.atributo_produto">
+              <MappingFragment StoreEntitySet="atributo_produto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tipo_atributo_id" ColumnName="tipo_atributo_id" />
+                <ScalarProperty Name="produto_id" ColumnName="produto_id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="data_desativacao" ColumnName="data_desativacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categoria">
+            <EntityTypeMapping TypeName="ChabellyModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="data_criacao" ColumnName="data_criacao" />
+                <ScalarProperty Name="data_desativacao" ColumnName="data_desativacao" />
+                <ScalarProperty Name="usuario_destativacao" ColumnName="usuario_destativacao" />
+                <ScalarProperty Name="categoria_pai" ColumnName="categoria_pai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contato_usuario">
+            <EntityTypeMapping TypeName="ChabellyModel.contato_usuario">
+              <MappingFragment StoreEntitySet="contato_usuario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="data_desativacao" ColumnName="data_desativacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dominio">
+            <EntityTypeMapping TypeName="ChabellyModel.dominio">
+              <MappingFragment StoreEntitySet="dominio">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="enderecos">
+            <EntityTypeMapping TypeName="ChabellyModel.enderecos">
+              <MappingFragment StoreEntitySet="enderecos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="logadouro" ColumnName="logadouro" />
+                <ScalarProperty Name="complemento" ColumnName="complemento" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="pais" ColumnName="pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estoque_produto">
+            <EntityTypeMapping TypeName="ChabellyModel.estoque_produto">
+              <MappingFragment StoreEntitySet="estoque_produto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="produto_id" ColumnName="produto_id" />
+                <ScalarProperty Name="atributo_produto_id" ColumnName="atributo_produto_id" />
+                <ScalarProperty Name="estoque_produto1" ColumnName="estoque_produto" />
+                <ScalarProperty Name="estoque_atributo" ColumnName="estoque_atributo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="foto_produto">
+            <EntityTypeMapping TypeName="ChabellyModel.foto_produto">
+              <MappingFragment StoreEntitySet="foto_produto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome_foto" ColumnName="nome_foto" />
+                <ScalarProperty Name="produto_id" ColumnName="produto_id" />
+                <ScalarProperty Name="ordem" ColumnName="ordem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grupo">
+            <EntityTypeMapping TypeName="ChabellyModel.grupo">
+              <MappingFragment StoreEntitySet="grupo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="historico_estoque">
+            <EntityTypeMapping TypeName="ChabellyModel.historico_estoque">
+              <MappingFragment StoreEntitySet="historico_estoque">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="produto_id" ColumnName="produto_id" />
+                <ScalarProperty Name="tipo_alteracao" ColumnName="tipo_alteracao" />
+                <ScalarProperty Name="observacao" ColumnName="observacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="permissoes">
+            <EntityTypeMapping TypeName="ChabellyModel.permissoes">
+              <MappingFragment StoreEntitySet="permissoes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sigla" ColumnName="sigla" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="preco_produto">
+            <EntityTypeMapping TypeName="ChabellyModel.preco_produto">
+              <MappingFragment StoreEntitySet="preco_produto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="produto_id" ColumnName="produto_id" />
+                <ScalarProperty Name="data_cadastro" ColumnName="data_cadastro" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="produto">
+            <EntityTypeMapping TypeName="ChabellyModel.produto">
+              <MappingFragment StoreEntitySet="produto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="codigo_referencia" ColumnName="codigo_referencia" />
+                <ScalarProperty Name="data_cadastro" ColumnName="data_cadastro" />
+                <ScalarProperty Name="foto_id" ColumnName="foto_id" />
+                <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+                <ScalarProperty Name="data_desativacao" ColumnName="data_desativacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_atributo">
+            <EntityTypeMapping TypeName="ChabellyModel.tipo_atributo">
+              <MappingFragment StoreEntitySet="tipo_atributo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="ChabellyModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="dominio_id" ColumnName="dominio_id" />
+                <ScalarProperty Name="data_criacao" ColumnName="data_criacao" />
+                <ScalarProperty Name="data_desativacao" ColumnName="data_desativacao" />
+                <ScalarProperty Name="endereco_principal" ColumnName="endereco_principal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="grupo_permissao" TypeName="ChabellyModel.grupo_permissao" StoreEntitySet="grupo_permissao">
+            <EndProperty Name="grupo">
+              <ScalarProperty Name="id" ColumnName="grupo_id" />
+            </EndProperty>
+            <EndProperty Name="permissoes">
+              <ScalarProperty Name="id" ColumnName="permissao_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="usuario_grupo" TypeName="ChabellyModel.usuario_grupo" StoreEntitySet="usuario_grupo">
+            <EndProperty Name="grupo">
+              <ScalarProperty Name="id" ColumnName="grupo_id" />
+            </EndProperty>
+            <EndProperty Name="usuario">
+              <ScalarProperty Name="id" ColumnName="usuario_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

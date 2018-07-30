@@ -1,0 +1,13 @@
+D:\pablo\chabelly\chabelly\chabelly.Service\bin\Debug\chabelly.Service.dll
+D:\pablo\chabelly\chabelly\chabelly.Service\bin\Debug\chabelly.Service.pdb
+D:\pablo\chabelly\chabelly\chabelly.Service\bin\Debug\chabelly.Helpers.dll
+D:\pablo\chabelly\chabelly\chabelly.Service\bin\Debug\chabelly.Model.dll
+D:\pablo\chabelly\chabelly\chabelly.Service\bin\Debug\chabelly.Repository.dll
+D:\pablo\chabelly\chabelly\chabelly.Service\bin\Debug\EntityFramework.dll
+D:\pablo\chabelly\chabelly\chabelly.Service\bin\Debug\chabelly.Helpers.pdb
+D:\pablo\chabelly\chabelly\chabelly.Service\bin\Debug\chabelly.Model.pdb
+D:\pablo\chabelly\chabelly\chabelly.Service\bin\Debug\chabelly.Repository.pdb
+D:\pablo\chabelly\chabelly\chabelly.Service\bin\Debug\EntityFramework.xml
+D:\pablo\chabelly\chabelly\chabelly.Service\obj\Debug\chabelly.Service.csprojResolveAssemblyReference.cache
+D:\pablo\chabelly\chabelly\chabelly.Service\obj\Debug\chabelly.Service.dll
+D:\pablo\chabelly\chabelly\chabelly.Service\obj\Debug\chabelly.Service.pdb

@@ -1,0 +1,5 @@
+D:\pablo\chabelly\chabelly\chabelly.Helpers\bin\Debug\chabelly.Helpers.dll
+D:\pablo\chabelly\chabelly\chabelly.Helpers\bin\Debug\chabelly.Helpers.pdb
+D:\pablo\chabelly\chabelly\chabelly.Helpers\obj\Debug\chabelly.Helpers.csprojResolveAssemblyReference.cache
+D:\pablo\chabelly\chabelly\chabelly.Helpers\obj\Debug\chabelly.Helpers.dll
+D:\pablo\chabelly\chabelly\chabelly.Helpers\obj\Debug\chabelly.Helpers.pdb

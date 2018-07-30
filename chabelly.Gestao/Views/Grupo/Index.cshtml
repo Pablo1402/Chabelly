@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Grupos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Ajax.BeginForm("Grid", "Grupo", new AjaxOptions
+{
+    UpdateTargetId = "list_grid",
+    OnBegin = "onBeginLoad",
+    OnSuccess = "onSuccessLoad",
+    OnFailure = "onSuccessLoad"
+}, new { @class = "horizontal-form form-inline" }))
+{
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet box dark">
+                <div class="portlet-title">
+                    <div class="caption">
+                        Pesquisa de Grupos
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-doby">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <label class="control-label">Nome:</label><br />
+                                    <input type="text" name="nome" id="nome" class="form-control col-md-12" style="width:340%" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">&nbsp;</label>
+                                    <div class="clearfix"></div>
+                                    <button type="submit" id="submit-form" class="btn red-haze" value="Pesquisar"><i class="fa  fa-search"></i> Pesquisar</button>
+                                    <a class="btn green-dark" href="@Url.Action("Novo", "grupo")" style="float: right; margin-left:5px;"><i class="icon-plus"></i>&nbsp;&nbsp;Novo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- BEGIN SAMPLE TABLE PORTLET-->
+                    <div class="portlet box dark">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-list-alt"></i>Lista
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div id="list_grid">
+                                @{ Html.RenderAction("Grid"); }
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END SAMPLE TABLE PORTLET-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+                                    }
+
+@section footer{
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script type="text/javascript" src="~/Content/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="~/Content/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/global/plugins/clockface/js/clockface.js"></script>
+    <script type="text/javascript" src="~/Content/assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script type="text/javascript" src="~/Content/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+    <script type="text/javascript" src="~/Content/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/global/plugins/bootstrap-datepicker/js/locales/bootstrap-datepicker.pt-BR.js"></script>
+    <script type="text/javascript" src="~/Content/assets/global/plugins/jquery-inputmask/inputmask/jquery.inputmask.js"></script>
+    <script type="text/javascript" src="~/Content/assets/global/plugins/jcrop/js/jquery.Jcrop.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.meio.mask.js"></script>
+    <script type="text/javascript" src="~/Scripts/script.js"></script>
+    <script type="text/javascript">
+        function onBeginLoad() {
+            Metronic.blockUI({
+                boxed: true
+            });
+        }
+        function onSuccessLoad() {
+            Metronic.unblockUI();
+            Metronic.init();
+        }
+    </script>
+
+}
+
+
+
+
+

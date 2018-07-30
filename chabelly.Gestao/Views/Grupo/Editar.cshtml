@@ -1,0 +1,198 @@
+﻿@model chabelly.Model.grupo
+
+@{
+    ViewBag.Title = Model.id.Equals(0) ? "Novo Grupo" : "Editar Grupo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet box dark">
+            <div class="portlet-title">
+                <div class="caption">
+                    @if (Model.id.Equals(0))
+                    {
+                        @:Cadastrar Novo Grupo
+                            }
+                    else
+                    {
+                        @:Alterar Grupo
+                            }
+                </div>
+            </div>
+
+            <div class="portlet-body form">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+
+
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4>
+                                    <label class="control-label">Dados Cadastrais:</label>
+                                </h4>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group inline">
+                                    <label class="control-label">Nome:</label>
+                                    <div>
+                                        @Html.TextBoxFor(x => x.nome, new { @class = "form-control"})
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group inline">
+                                    @if (Model.id > 0)
+                                    {
+                                        <div class="col-md-3">
+                                            <h4>Permissões do Grupo</h4>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" id="modal_permissoes" class="btn blue-steel"><i class="fa fa-check"></i>Adicionar Permissão</button>
+                                        </div>
+                                        if (Model.permissoes.Any())
+                                        {
+                                            <div class="table-scrollable">
+                                                <table class="table table-striped table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th align="center" style="width: 50px; text-align: center">#</th>
+                                                            <th>Sigla</th>
+                                                            <th>Descriçao</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @{ var count = 0; }
+                                                        @foreach (var item in Model.permissoes)
+                                                        {
+                                                            <tr class="@(count++%2 == 0 ? "row0" : "row1") @(count == 1 ? "first" : "")">
+                                                                <td style="width: auto">
+                                                                    <a href="javascript:void(0)" class="font-red remover" alt="Remover" title="Remover" data-id="@item.id"><i class="fa fa-close"></i></a>
+                                                                </td>
+                                                                <td>@item.sigla</td>
+                                                                <td>@item.descricao</td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                                            }
+                                                            else
+                                                            {
+                                        <div class="alert alert-danger">
+                                            <h3>Nenhuma permissão anexa à esse grupo</h3>
+                                        </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class="alert alert-danger">
+                                            <h3>Salve o grupo para anexar uma permissão</h3>
+                                        </div>
+                                    }
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-actions right">
+                        <a href="/Grupo" class="btn yellow"><i class="icon-arrow-left"></i>&nbsp;Voltar</a>
+                        <button type="submit" class="btn blue-chambray" id="salvar"><i class="icon-check"></i>&nbsp;&nbsp;Salvar</button>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="portlet-permissoes" tabindex="-1" role="dialog" aria-labelledby="myModalLabelattr" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Permissões:</h4>
+            </div>
+            <div class="modal-body temps">
+
+                <div id="list_permissoes">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn green" id="vincular_permissao">Associar</button>
+                <button type="button" class="btn default" data-dismiss="modal" id="close-data">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section footer {
+
+    <script type="text/javascript">
+
+        $('.remover').on('click', function () {
+            var permissaoId = $(this).attr('data-id');
+            var grupoId =@Model.id;
+            $.ajax({
+                type: 'POST',
+                url: '/Grupo/RemoverPermissao',
+                data: { grupoId: grupoId, permissaoId: permissaoId},
+                beforeSend: function (xhr, opts) {
+                    $(".spinner-temps").show();
+                },
+                success: function (retorno) {
+                    if (retorno.success) {
+                        $(".spinner-temps").hide();
+                        toastr.success(retorno.message, "Permissão");
+                        $("#portlet-operadores").modal("hide");
+                    } else {
+                        toastr.error(retorno.message, "Permissão");
+                    }
+                },
+                error: function (e) {
+                    toastr.error(e, "Permissão");
+                }
+            });
+        })
+
+        $('#modal_permissoes').on('click',function(){
+
+            $('#portlet-permissoes').modal('show');
+            $.ajax({
+                type: 'POST',
+                url: '/EquipeOperador/VincularOperador',
+                data: { grupoId: grupoId, permissaoId: permissaoId},
+                beforeSend: function (xhr, opts) {
+                    $(".spinner-temps").show();
+                },
+                success: function (retorno) {
+                    if (retorno.success) {
+                        $(".spinner-temps").hide();
+                        toastr.success(retorno.message, "Associar Operadores");
+                        updateGridTurmas();
+                        $("#portlet-operadores").modal("hide");
+                    } else {
+                        toastr.error(retorno.message, "Associar Operadores");
+                    }
+                },
+                error: function (e) {
+                    toastr.error(e, "Associar Operadores");
+                }
+            });
+        });
+
+    </script>
+
+
+}

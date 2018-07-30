@@ -1,0 +1,84 @@
+﻿@model chabelly.Model.permissoes
+
+@{
+    ViewBag.Title = Model.id.Equals(0) ? "Nova Permissão" : "Editar Permissão";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet box dark">
+            <div class="portlet-title">
+                <div class="caption">
+                    @if (Model.id.Equals(0))
+                    {
+                        @:Cadastrar Nova Permissão
+                            }
+                    else
+                    {
+                        @:Alterar Permissão
+                            }
+                </div>
+            </div>
+
+            <div class="portlet-body form">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+
+
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4>
+                                    <label class="control-label">Dados Cadastrais:</label>
+                                </h4>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group inline">
+                                    <label class="control-label">Sigla:</label>
+                                    <div>
+                                        @Html.TextBoxFor(x => x.sigla, new { @class = "form-control", id = "sigla"})
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group inline">
+                                    <label class="control-label">Descrição:</label>
+                                    <div>
+                                        @Html.TextBoxFor(x => x.descricao, new { @class = "form-control "})
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="form-actions right">
+                        <a href="/Permissao" class="btn yellow"><i class="icon-arrow-left"></i>&nbsp;Voltar</a>
+                        <button type="submit" class="btn blue-chambray" id="salvar"><i class="icon-check"></i>&nbsp;&nbsp;Salvar</button>
+
+                    </div>
+                            }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section footer {
+
+    <script type="text/javascript">
+
+
+
+
+    </script>
+
+
+}

@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ChabellyModelStoreContainer" CdmEntityContainer="ChabellyEntities">
+    <EntitySetMapping Name="atributo_produto">
+      <EntityTypeMapping TypeName="ChabellyModel.atributo_produto">
+        <MappingFragment StoreEntitySet="atributo_produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tipo_atributo_id" ColumnName="tipo_atributo_id" />
+          <ScalarProperty Name="produto_id" ColumnName="produto_id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="data_desativacao" ColumnName="data_desativacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categoria">
+      <EntityTypeMapping TypeName="ChabellyModel.categoria">
+        <MappingFragment StoreEntitySet="categoria">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="data_criacao" ColumnName="data_criacao" />
+          <ScalarProperty Name="data_desativacao" ColumnName="data_desativacao" />
+          <ScalarProperty Name="usuario_destativacao" ColumnName="usuario_destativacao" />
+          <ScalarProperty Name="categoria_pai" ColumnName="categoria_pai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contato_usuario">
+      <EntityTypeMapping TypeName="ChabellyModel.contato_usuario">
+        <MappingFragment StoreEntitySet="contato_usuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="data_desativacao" ColumnName="data_desativacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dominio">
+      <EntityTypeMapping TypeName="ChabellyModel.dominio">
+        <MappingFragment StoreEntitySet="dominio">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enderecos">
+      <EntityTypeMapping TypeName="ChabellyModel.enderecos">
+        <MappingFragment StoreEntitySet="enderecos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="logadouro" ColumnName="logadouro" />
+          <ScalarProperty Name="complemento" ColumnName="complemento" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="bairro" ColumnName="bairro" />
+          <ScalarProperty Name="cidade" ColumnName="cidade" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="pais" ColumnName="pais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estoque_produto">
+      <EntityTypeMapping TypeName="ChabellyModel.estoque_produto">
+        <MappingFragment StoreEntitySet="estoque_produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="produto_id" ColumnName="produto_id" />
+          <ScalarProperty Name="atributo_produto_id" ColumnName="atributo_produto_id" />
+          <ScalarProperty Name="estoque_produto1" ColumnName="estoque_produto" />
+          <ScalarProperty Name="estoque_atributo" ColumnName="estoque_atributo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="foto_produto">
+      <EntityTypeMapping TypeName="ChabellyModel.foto_produto">
+        <MappingFragment StoreEntitySet="foto_produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome_foto" ColumnName="nome_foto" />
+          <ScalarProperty Name="produto_id" ColumnName="produto_id" />
+          <ScalarProperty Name="ordem" ColumnName="ordem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="grupo">
+      <EntityTypeMapping TypeName="ChabellyModel.grupo">
+        <MappingFragment StoreEntitySet="grupo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="historico_estoque">
+      <EntityTypeMapping TypeName="ChabellyModel.historico_estoque">
+        <MappingFragment StoreEntitySet="historico_estoque">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="produto_id" ColumnName="produto_id" />
+          <ScalarProperty Name="tipo_alteracao" ColumnName="tipo_alteracao" />
+          <ScalarProperty Name="observacao" ColumnName="observacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permissoes">
+      <EntityTypeMapping TypeName="ChabellyModel.permissoes">
+        <MappingFragment StoreEntitySet="permissoes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="sigla" ColumnName="sigla" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="preco_produto">
+      <EntityTypeMapping TypeName="ChabellyModel.preco_produto">
+        <MappingFragment StoreEntitySet="preco_produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="produto_id" ColumnName="produto_id" />
+          <ScalarProperty Name="data_cadastro" ColumnName="data_cadastro" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="produto">
+      <EntityTypeMapping TypeName="ChabellyModel.produto">
+        <MappingFragment StoreEntitySet="produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="codigo_referencia" ColumnName="codigo_referencia" />
+          <ScalarProperty Name="data_cadastro" ColumnName="data_cadastro" />
+          <ScalarProperty Name="foto_id" ColumnName="foto_id" />
+          <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+          <ScalarProperty Name="data_desativacao" ColumnName="data_desativacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_atributo">
+      <EntityTypeMapping TypeName="ChabellyModel.tipo_atributo">
+        <MappingFragment StoreEntitySet="tipo_atributo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="ChabellyModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="dominio_id" ColumnName="dominio_id" />
+          <ScalarProperty Name="data_criacao" ColumnName="data_criacao" />
+          <ScalarProperty Name="data_desativacao" ColumnName="data_desativacao" />
+          <ScalarProperty Name="endereco_principal" ColumnName="endereco_principal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="grupo_permissao" TypeName="ChabellyModel.grupo_permissao" StoreEntitySet="grupo_permissao">
+      <EndProperty Name="grupo">
+        <ScalarProperty Name="id" ColumnName="grupo_id" />
+      </EndProperty>
+      <EndProperty Name="permissoes">
+        <ScalarProperty Name="id" ColumnName="permissao_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="usuario_grupo" TypeName="ChabellyModel.usuario_grupo" StoreEntitySet="usuario_grupo">
+      <EndProperty Name="grupo">
+        <ScalarProperty Name="id" ColumnName="grupo_id" />
+      </EndProperty>
+      <EndProperty Name="usuario">
+        <ScalarProperty Name="id" ColumnName="usuario_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

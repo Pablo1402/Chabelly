@@ -1,0 +1,50 @@
+﻿.tt-hint {
+    color: #999;
+}
+.twitter-typeahead{
+    display: block !important;
+}
+.tt-menu {
+    margin-top: 8px;
+    padding: 8px 0;
+    background-color: #fff !important;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-dropdown-menu span{
+    background-color: #fff !important;
+    display: block !important;
+    border: 1px solid #ccc;
+}
+
+.tt-suggestion {
+    background-color: #fff !important;
+    padding: 3px 20px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.tt-suggestion span {
+    background-color: #fff !important;
+    color: darkblue;
+}
+
+.tt-suggestion.tt-cursor { /* UPDATE: newer versions use .tt-suggestion.tt-cursor */
+    color: #fff;
+    background-color: #0097cf;
+}
+
+.tt-suggestion p {
+    background-color: #fff !important;
+    margin: 0;
+}
+
+
+#scrollable-dropdown-menu .tt-menu {
+    background-color: #fff !important;
+    max-height: 150px;
+    overflow-y: auto;
+}

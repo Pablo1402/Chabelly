@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Gestão";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="user-login-5">
+    <div class="row bs-reset">
+        <div class="col-md-6 bs-reset mt-login-5-bsfix">
+            <div class="login-bg" style="background: none; position: relative; z-index: 0;">
+                <img class="login-logo" src="~/Content/Images/Login.png" style="width:100%;height:100%"> <div class="backstretch" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 372px; width: 675px; z-index: -999998; position: absolute;"><img style="position: absolute; margin: 0px; padding: 0px; border: none; width: 675px; height: 607.5px; max-height: none; max-width: none; z-index: -999999; left: 0px; top: -117.75px;" src="../assets/pages/img/login/bg3.jpg"></div>
+            </div>
+        </div>
+        <div class="col-md-6 login-container bs-reset mt-login-5-bsfix">
+            <div class="login-content">
+                <h1>Gestor CHABELLY</h1>
+                <form action="javascript:;" class="login-form" method="post" novalidate="novalidate">
+                    <div class="alert alert-danger display-hide">
+                        <button class="close" data-close="alert"></button>
+                        <span>Enter any username and password. </span>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <input class="form-control form-control-solid placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="usuario" id="username" required="" aria-required="true">
+                        </div>
+                        <div class="col-xs-6">
+                            <input class="form-control form-control-solid placeholder-no-fix form-group" type="password" autocomplete="off" placeholder="senha" id="password" required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="rem-password">
+                                
+                            </div>
+                        </div>
+                        <div class="col-sm-8 text-right">
+                            <div class="forgot-password">
+                                <a href="javascript:;" id="forget-password" class="forget-password">Esqueceu sua senha?</a>
+                            </div>
+                            <button class="btn green" id="login" type="button">Entrar</button>
+                        </div>
+                    </div>
+                </form>
+              
+            </div>
+         
+        </div>
+    </div>
+</div>
+@section footer {
+    <script type="text/javascript">
+
+        $('#login').on('click', function () {
+            var usuario = $("#username").val();
+            var senha = $("#password").val();
+            $.ajax({
+                type: 'POST',
+                url: '/Account/Login',
+                data: { login: usuario, senha: senha },
+                beforeSend: function (xhr, opts) {
+                    $(".spinner-temps").show();
+                },
+                success: function (retorno) {
+                    if (retorno.status) {
+                        toastr.success(retorno.message, "Login");
+                        window.location = retorno.url;
+                    } else {
+                        toastr.error(retorno.message, "Login");
+                    }
+                },
+                error: function (e) {
+                    toastr.error(e, "Login");
+                }
+            });
+        })
+
+    </script>
+    
+    }

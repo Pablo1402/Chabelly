@@ -1,0 +1,12 @@
+D:\pablo\chabelly\chabelly\chabelly.Repository\bin\Debug\chabelly.Repository.dll
+D:\pablo\chabelly\chabelly\chabelly.Repository\bin\Debug\chabelly.Repository.pdb
+D:\pablo\chabelly\chabelly\chabelly.Repository\bin\Debug\chabelly.Helpers.dll
+D:\pablo\chabelly\chabelly\chabelly.Repository\bin\Debug\chabelly.Model.dll
+D:\pablo\chabelly\chabelly\chabelly.Repository\bin\Debug\EntityFramework.dll
+D:\pablo\chabelly\chabelly\chabelly.Repository\bin\Debug\chabelly.Helpers.pdb
+D:\pablo\chabelly\chabelly\chabelly.Repository\bin\Debug\chabelly.Model.pdb
+D:\pablo\chabelly\chabelly\chabelly.Repository\bin\Debug\EntityFramework.xml
+D:\pablo\chabelly\chabelly\chabelly.Repository\obj\Debug\chabelly.Repository.csprojResolveAssemblyReference.cache
+D:\pablo\chabelly\chabelly\chabelly.Repository\obj\Debug\chabelly.Repository.dll
+D:\pablo\chabelly\chabelly\chabelly.Repository\obj\Debug\chabelly.Repository.pdb
+D:\pablo\chabelly\chabelly\chabelly.Repository\bin\Debug\chabelly.Repository.dll.config
